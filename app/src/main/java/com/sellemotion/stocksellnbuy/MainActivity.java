@@ -6,14 +6,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.sellemotion.stocksellnbuy.stock.StockOwnItemListViewAdapter;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     //StockOwnList
-    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayList<HashMap<String, String>> listItems=new ArrayList<HashMap<String, String>>();
 
     //set a string adapter
-    ArrayAdapter<String> adapter;
+    StockOwnItemListViewAdapter adapter;
+
+    public static final String FIRST_COLUMN="First";
+    public static final String SECOND_COLUMN="Second";
+    public static final String THIRD_COLUMN="Third";
+    public static final String FOURTH_COLUMN="Fourth";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,23 +30,29 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView listView = (ListView) findViewById(R.id.stockownitemlistview);
 
-        listItems.add("item 1");
-        listItems.add("item 2");
-        listItems.add("item 3");
-        listItems.add("item 4");
-        listItems.add("item 5");
-        listItems.add("item 6");
+        listItems = new ArrayList<HashMap<String, String>>();
 
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                listItems);
+        HashMap<String,String> hashmap=new HashMap<String, String>();
+        hashmap.put(FIRST_COLUMN, "0001");
+        hashmap.put(SECOND_COLUMN, "삼성전자");
+        hashmap.put(THIRD_COLUMN, "10,000");
+        listItems.add(hashmap);
+
+        HashMap<String,String> hashmap2=new HashMap<String, String>();
+        hashmap2.put(FIRST_COLUMN, "0002");
+        hashmap2.put(SECOND_COLUMN, "애경산업");
+        hashmap2.put(THIRD_COLUMN, "15,000");
+        listItems.add(hashmap2);
+
+        HashMap<String,String> hashmap3=new HashMap<String, String>();
+        hashmap3.put(FIRST_COLUMN, "0003");
+        hashmap3.put(SECOND_COLUMN, "랩노믹스");
+        hashmap3.put(THIRD_COLUMN, "20,000");
+        listItems.add(hashmap3);
+
+        adapter=new StockOwnItemListViewAdapter(this, listItems);
 
         listView.setAdapter(adapter);
-        System.out.println("sssss");
     }
 
-    public void addItems(View v) {
-        listItems.add("test item");
-        adapter.notifyDataSetChanged();
-    }
 }

@@ -21,12 +21,12 @@ public class StockOwnItemList extends ListActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_main);
-        listItems.add("item 1");
-        listItems.add("item 2");
-        listItems.add("item 3");
-        listItems.add("item 4");
-        listItems.add("item 5");
-        listItems.add("item 6");
+        listItems.add("삼성전자");
+        listItems.add("애경산업");
+        listItems.add("랩노믹스");
+        listItems.add("삼성전기");
+        listItems.add("셀트리온");
+        listItems.add("삼성바이오로직스");
 
         final ListView listView = (ListView) findViewById(R.id.stockownitemlistview);
 
