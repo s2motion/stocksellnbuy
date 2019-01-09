@@ -20,9 +20,9 @@ public class StockOwnItemListViewAdapter extends BaseAdapter{
     public ArrayList<HashMap<String, String>> stockOwnItemList;
     Activity activity;
 
-    public static final String FIRST_COLUMN = "a";
-    public static final String SECOND_COLUMN = "b";
-    public static final String THIRD_COLUMN = "c";
+    public static final String FIRST_COLUMN = "First";
+    public static final String SECOND_COLUMN = "Second";
+    public static final String THIRD_COLUMN = "Third";
 
 
     public StockOwnItemListViewAdapter(Activity activity, ArrayList<HashMap<String, String>> list){
@@ -65,16 +65,16 @@ public class StockOwnItemListViewAdapter extends BaseAdapter{
             holder.txtFirst = (TextView)convertView.findViewById(R.id.TextFirst);
             holder.txtSecond = (TextView)convertView.findViewById(R.id.TextSecond);
             holder.txtThird = (TextView)convertView.findViewById(R.id.TextThird);
-
             convertView.setTag(holder);
         }else{
             holder = (ListViewItemHolder)convertView.getTag();
         }
 
         HashMap<String, String> map = stockOwnItemList.get(position);
-        holder.txtFirst.setText(map.get(FIRST_COLUMN));
+        holder.txtFirst.setText(FIRST_COLUMN);
         holder.txtSecond.setText(map.get(SECOND_COLUMN));
         holder.txtThird.setText(map.get(THIRD_COLUMN));
+
         return convertView;
     }
 }
