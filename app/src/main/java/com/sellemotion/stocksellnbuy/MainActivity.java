@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     //StockOwnList
-    ArrayList<HashMap<String, String>> listItems=new ArrayList<HashMap<String, String>>();
+    ArrayList<HashMap<String, String>> listItems;
 
     //set a string adapter
     StockOwnItemListViewAdapter adapter;
@@ -28,31 +28,55 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ListView listView = (ListView) findViewById(R.id.stockownitemlistview);
+        ListView listView = (ListView) findViewById(R.id.stockownitemlistview);
 
-        listItems = new ArrayList<HashMap<String, String>>();
-
-        HashMap<String,String> hashmap=new HashMap<String, String>();
-        hashmap.put(FIRST_COLUMN, "0001");
-        hashmap.put(SECOND_COLUMN, "삼성전자");
-        hashmap.put(THIRD_COLUMN, "10,000");
-        listItems.add(hashmap);
-
-        HashMap<String,String> hashmap2=new HashMap<String, String>();
-        hashmap2.put(FIRST_COLUMN, "0002");
-        hashmap2.put(SECOND_COLUMN, "애경산업");
-        hashmap2.put(THIRD_COLUMN, "15,000");
-        listItems.add(hashmap2);
-
-        HashMap<String,String> hashmap3=new HashMap<String, String>();
-        hashmap3.put(FIRST_COLUMN, "0003");
-        hashmap3.put(SECOND_COLUMN, "랩노믹스");
-        hashmap3.put(THIRD_COLUMN, "20,000");
-        listItems.add(hashmap3);
-
+        populateList();
         adapter=new StockOwnItemListViewAdapter(this, listItems);
 
         listView.setAdapter(adapter);
+
+    }
+
+    private void populateList(){
+        listItems = new ArrayList<HashMap<String, String>>();
+
+//        HashMap<String,String> hashmap=new HashMap<String, String>();
+//        hashmap.put(FIRST_COLUMN, "0001");
+//        hashmap.put(SECOND_COLUMN, "삼성전자");
+//        hashmap.put(THIRD_COLUMN, "10,000");
+//        listItems.add(hashmap);
+//
+//        HashMap<String,String> hashmap2=new HashMap<String, String>();
+//        hashmap2.put(FIRST_COLUMN, "0002");
+//        hashmap2.put(SECOND_COLUMN, "애경산업");
+//        hashmap2.put(THIRD_COLUMN, "15,000");
+//        listItems.add(hashmap2);
+//
+//        HashMap<String,String> hashmap3=new HashMap<String, String>();
+//        hashmap3.put(FIRST_COLUMN, "0003");
+//        hashmap3.put(SECOND_COLUMN, "랩노믹스");
+//        hashmap3.put(THIRD_COLUMN, "20,000");
+//        listItems.add(hashmap3);
+
+        listItems = new ArrayList<HashMap<String, String>>();
+
+        HashMap temp = new HashMap();
+        temp.put(FIRST_COLUMN,"Colored Notebooks");
+        temp.put(SECOND_COLUMN, "By NavNeet");
+        temp.put(THIRD_COLUMN, "Rs. 200");
+        listItems.add(temp);
+
+        HashMap temp1 = new HashMap();
+        temp1.put(FIRST_COLUMN,"Diaries");
+        temp1.put(SECOND_COLUMN, "By Amee Products");
+        temp1.put(THIRD_COLUMN, "Rs. 400");
+        listItems.add(temp1);
+
+        HashMap temp2 = new HashMap();
+        temp2.put(FIRST_COLUMN,"Note Books and Stationery");
+        temp2.put(SECOND_COLUMN, "By National Products");
+        temp2.put(THIRD_COLUMN, "Rs. 600");
+        listItems.add(temp2);
     }
 
 }

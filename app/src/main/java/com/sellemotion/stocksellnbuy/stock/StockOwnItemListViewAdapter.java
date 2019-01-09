@@ -20,9 +20,9 @@ public class StockOwnItemListViewAdapter extends BaseAdapter{
     public ArrayList<HashMap<String, String>> stockOwnItemList;
     Activity activity;
 
-    public static final String FIRST_COLUMN = "종목코드";
-    public static final String SECOND_COLUMN = "종목명";
-    public static final String THIRD_COLUMN = "현재가";
+    public static final String FIRST_COLUMN = "a";
+    public static final String SECOND_COLUMN = "b";
+    public static final String THIRD_COLUMN = "c";
 
 
     public StockOwnItemListViewAdapter(Activity activity, ArrayList<HashMap<String, String>> list){
@@ -43,38 +43,38 @@ public class StockOwnItemListViewAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     private class ListViewItemHolder {
-        TextView firstColumn;
-        TextView secondColumn;
-        TextView thirdColumn;
+        TextView txtFirst;
+        TextView txtSecond;
+        TextView txtThird;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
 
         ListViewItemHolder holder;
 
         LayoutInflater inflater = activity.getLayoutInflater();
 
-        if(view == null){
-            view = inflater.inflate(R.layout.stockitem_column, null);
+        if(convertView == null){
+            convertView = inflater.inflate(R.layout.stockitem_column, null);
             holder = new ListViewItemHolder();
-            holder.firstColumn = (TextView)view.findViewById(R.id.TextFirst);
-            holder.secondColumn = (TextView)view.findViewById(R.id.TextSecond);
-            holder.thirdColumn = (TextView)view.findViewById(R.id.TextThird);
+            holder.txtFirst = (TextView)convertView.findViewById(R.id.TextFirst);
+            holder.txtSecond = (TextView)convertView.findViewById(R.id.TextSecond);
+            holder.txtThird = (TextView)convertView.findViewById(R.id.TextThird);
 
-            view.setTag(holder);
+            convertView.setTag(holder);
         }else{
-            holder = (ListViewItemHolder)view.getTag();
+            holder = (ListViewItemHolder)convertView.getTag();
         }
 
-        HashMap<String, String> map = stockOwnItemList.get(i);
-        holder.firstColumn.setText(map.get(FIRST_COLUMN));
-        holder.secondColumn.setText(map.get(SECOND_COLUMN));
-        holder.thirdColumn.setText(map.get(THIRD_COLUMN));
-        return view;
+        HashMap<String, String> map = stockOwnItemList.get(position);
+        holder.txtFirst.setText(map.get(FIRST_COLUMN));
+        holder.txtSecond.setText(map.get(SECOND_COLUMN));
+        holder.txtThird.setText(map.get(THIRD_COLUMN));
+        return convertView;
     }
 }
